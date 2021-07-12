@@ -1,4 +1,22 @@
 <app-title [title]="title"></app-title>
-<ul>
-  <li *ngFor= "let student of students">{{student.name}}</li>
-</ul>
+
+
+<table class="table ">
+  <thead clas="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Sobrenome</th>
+      <th scope="col">Telefone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor= "let student of students">
+      <th scope="row">{{student.id}}</th>
+      <td>{{student.name}}</td>
+      <td>{{student.lastName}}</td>
+      <td>{{student.phoneNumber}}</td>
+    </tr>
+    
+  </tbody>
+</table>
