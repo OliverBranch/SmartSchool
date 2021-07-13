@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsComponent implements OnInit {
 
-  title = "Alunos"
+  title = "Alunos";
+  public SelectedStudent: string = "";
   public students = [
-
     { id: 1,name: "Marta", lastName:"Kent", phoneNumber: 27988731234},
     { id: 2,name: "Paula", lastName:"Isabela", phoneNumber: 27988735634},
     { id: 3,name: "Laura", lastName:"Antonia", phoneNumber: 27988736473},
@@ -18,7 +18,17 @@ export class StudentsComponent implements OnInit {
     { id: 6,name: "Pedro", lastName:"Alvaro", phoneNumber: 27988737362},
     { id: 7,name: "Paulo", lastName:"José", phoneNumber: 27988738317}
 
-    ]
+    ];
+    selectStudent(student: any){
+      this.SelectedStudent = student.name;
+    }
+
+    back(){
+      this.SelectedStudent = "";
+    }
+
+
+
 
   constructor() { }
 
