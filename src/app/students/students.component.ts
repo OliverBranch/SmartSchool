@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Student } from "../../models/Student";
 
 @Component({
@@ -9,6 +10,7 @@ import { Student } from "../../models/Student";
 })
 export class StudentsComponent implements OnInit {
 
+  public modalRef!: BsModalRef;
   public studentForm!: FormGroup;
   public title = "Alunos";
   public SelectedStudent? : Student;
@@ -24,13 +26,20 @@ export class StudentsComponent implements OnInit {
     { id: 7,name: "Paulo", lastName:"José", phoneNumber: "27988738317"}
     
   ];
-  constructor(private fb: FormBuilder) {
-    this.formCreate();
-   }
 
+  
+ 
+  
+  constructor(private fb: FormBuilder, private modalService: BsModalService) {
+    this.formCreate();
+  }
+  
   ngOnInit(): void {
   }
-
+  
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
   formCreate(){
     this.studentForm = this.fb.group({
       name:['', Validators.required],

@@ -21,8 +21,8 @@
       <div>
         <div class="form-group">
           <hr>
-          <button class="btn btn-success" [disabled]="!teacherForm.valid" style="margin: 0 15px;">Enviar</button>
-          <button class="btn btn-outline-danger" (click)="back()">Cancelar</button>
+          <button class="btn btn-outline-success" [disabled]="!teacherForm.valid" style="margin: 0 15px;">Enviar</button>
+          <button class="btn  btn-outline-danger" (click)="back()">Cancelar</button>
         </div>
       </div>
     </form>
@@ -41,17 +41,38 @@
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Subject</th>
+          <th scope="col">Opções</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor= "let teacher of teachers" style="cursor:pointer;" (click)="selectTeacher(teacher)">
+        <tr *ngFor= "let teacher of teachers">
           <th scope="row">{{teacher.id}}</th>
           <td>{{teacher.name}}</td>
           <td>{{teacher.subject}}</td>
+          <td>
+            <div class="btn-group">
+              <button class="text-dark btn btn-sm btn-outline-warning" (click)="selectTeacher(teacher)" style="margin: 0 4px;">Detalhes</button>
+              <button class="btn btm-sm btn-outline-primary" (click)="openModal(template)" style="margin: 0 4px;">Alunos</button>
+            </div>
+          </td>
         </tr>
         
       </tbody>
     </table>
   </div>
 </div>
+ 
+
+ 
+<ng-template #template>
+  <div class="modal-body">
+    <app-students></app-students>
+  </div>
   
+  <div class="modal-footer">
+    
+    <button type="button" class="btn pull-right" aria-label="Close" (click)="modalRef.hide()">
+      FECHAR
+    </button>
+  </div>
+</ng-template>
