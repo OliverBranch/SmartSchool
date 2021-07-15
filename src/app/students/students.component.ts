@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Student } from "../../models/Student";
 
 @Component({
@@ -8,8 +9,11 @@ import { Student } from "../../models/Student";
 })
 export class StudentsComponent implements OnInit {
 
-  title = "Alunos";
+  public studentForm!: FormGroup;
+  public title = "Alunos";
   public SelectedStudent? : Student;
+  public textSimple?: string;
+
   public students = [
     { id: 1,name: "Marta", lastName:"Kent", phoneNumber: "27988731234"},
     { id: 2,name: "Paula", lastName:"Isabela", phoneNumber: "27988735634"},
@@ -18,22 +22,38 @@ export class StudentsComponent implements OnInit {
     { id: 5,name: "Lucas", lastName:"Machado", phoneNumber: "27988739382"},
     { id: 6,name: "Pedro", lastName:"Alvaro", phoneNumber: "27988737362"},
     { id: 7,name: "Paulo", lastName:"José", phoneNumber: "27988738317"}
-
-    ];
-    selectStudent(student: Student){
-      this.SelectedStudent = student;
-    }
-
-    back(){
-      this.SelectedStudent = undefined;
-    }
-
-
-
-
-  constructor() { }
+    
+  ];
+  constructor(private fb: FormBuilder) {
+    this.formCreate();
+   }
 
   ngOnInit(): void {
   }
 
+  formCreate(){
+    this.studentForm = this.fb.group({
+      name:['', Validators.required],
+      lastName:['', Validators.required],
+      phoneNumber:['', Validators.required]
+    });
+  }
+
+  submitStudent(){
+    console.log(this.studentForm?.value)
+  }
+
+  selectStudent(student: Student){
+    this.SelectedStudent = student;
+    this.studentForm.patchValue(student);
+  }
+  
+  back(){
+    this.SelectedStudent = undefined;
+  }
+  
 }
+
+
+
+
