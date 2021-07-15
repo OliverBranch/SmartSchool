@@ -1,5 +1,5 @@
 export class Teacher{
-    public id: Number; 
+    public id: Number;
     name: string;
     subject: string;
 
@@ -8,5 +8,6 @@ export class Teacher{
         this.name = name;
         this.subject = subject;
     }
+
 
 }

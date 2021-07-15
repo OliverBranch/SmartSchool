@@ -9,7 +9,7 @@ import {Teacher} from "../../models/Teacher"
 export class TeachersComponent implements OnInit {
 
   public title = "Professores";
-  public SelectedTeacher: Teacher;
+  public SelectedTeacher?: Teacher;
 
   public teachers = [
     {id: 1, name: "Mauricio", subject:"Matemática"},
@@ -19,12 +19,12 @@ export class TeachersComponent implements OnInit {
     {id: 5, name: "Alexandre", subject:"Programação"}
   ];
 
-  selectTeacher(teacher:Teacher){
-    this.SelectedTeacher = teacher.name;
+  selectTeacher(teacher: Teacher){
+    this.SelectedTeacher = teacher;
   }
 
   back(){
-    this.SelectedTeacher = null;
+    this.SelectedTeacher = undefined;
   }
 
   constructor() { }
