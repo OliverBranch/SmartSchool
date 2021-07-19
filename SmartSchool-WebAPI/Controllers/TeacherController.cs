@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Name
+namespace SmartSchool_WebAPI.Controllers
 {
     [ApiController]
-    [Route("[api/controller]")]
+    [Route("api/[controller]")]
     public class TeacherController: ControllerBase
     {
         [HttpGet]

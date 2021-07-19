@@ -1,14 +1,23 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Name
+namespace SmartSchool_WebAPI.Controllers
 {
     [ApiController]
-    [Route("[api/controller]")]
+    [Route("api/[controller]")]
     public class StudentController: ControllerBase
     {
-         [HttpGet]
+        [HttpGet]
         public IActionResult Get(){
-            return Ok("TestAluno");
+
+            try
+            {
+            return Ok("Tudo Certo");
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Error: {e.Message}");
+            }
         }
         
     }   
